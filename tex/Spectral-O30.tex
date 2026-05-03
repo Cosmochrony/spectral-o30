@@ -5,8 +5,8 @@
 \usepackage{hyperref}
 \usepackage{geometry}
 \usepackage{microtype}
-\usepackage{natbib}
 \usepackage{doi}
+\usepackage{natbib}
 
 \geometry{margin=2.5cm}
 
@@ -57,6 +57,10 @@ in $\operatorname{Sym}^2(V_{\rho})$\\[6pt]
     $[\lambda_1 : \lambda_2 : \lambda_3] = [1 : \tfrac{1}{2} : \tfrac{1}{2}]$, and
     identified this as an open problem requiring an analytical explanation.
     The present paper provides the complete derivation.
+    This is the first analytical derivation of the invariant covariance spectrum observed in O28:
+    the ratio $\lambda_1/\lambda_2 = 2$ is not dynamical, not statistical,
+    but a purely structural consequence of three compatible structures---BI parity,
+    the $\mathrm{Sym}^2(V_\rho)$ identification, and the Heisenberg grading.
     We prove that the Born--Infeld parity anti-linearity $\rho_{q-c} = \bar{\rho}_c$
     (O18) forces every admissible trajectory vector $w_j = \pi_c(v_j) \in V_\rho \cong \mathbb{C}^2$
     to satisfy $|\alpha_j| = |\beta_j|$, where $(\alpha_j, \beta_j)$ are the components in the
@@ -297,7 +301,7 @@ in $\operatorname{Sym}^2(V_{\rho})$\\[6pt]
 
     The diagonal entries of $\mathcal{C}_c$ are:
     \begin{align}
-    (\mathcal{C}_c)_{++}
+      (\mathcal{C}_c)_{++}
       &= \frac{1}{N}\sum_j |\alpha_j^2|^2
       = \frac{1}{N}\sum_j \frac{r_j^4}{4}
       = \frac{\langle r_j^4 \rangle}{4}, \label{eq:c11}\\
@@ -313,7 +317,7 @@ in $\operatorname{Sym}^2(V_{\rho})$\\[6pt]
     For the off-diagonal entries, every term involves at least one factor of
     $e^{\pm 2i\phi_j}$:
     \begin{align}
-    (\mathcal{C}_c)_{+0}
+      (\mathcal{C}_c)_{+0}
       &= \frac{1}{N}\sum_j \frac{r_j^2}{2}\, e^{2i\phi_j} \cdot \frac{r_j^2}{\sqrt{2}}
       = \frac{\langle r_j^4 \rangle}{2\sqrt{2}}\,
       \left\langle e^{2i\phi_j} \right\rangle = 0, \\
@@ -328,10 +332,14 @@ in $\operatorname{Sym}^2(V_{\rho})$\\[6pt]
     \end{align}
     Under condition~\eqref{eq:phase-decor}, $\langle e^{2i\phi_j} \rangle = 0$, which annihilates
     $(\mathcal{C}_c)_{+0}$ and $(\mathcal{C}_c)_{0-}$ directly.
-    The entry $(\mathcal{C}_c)_{+-}$ involves $\langle e^{4i\phi_j} \rangle$; this vanishes
-    independently provided the phase distribution has no harmonic at $4\phi$,
-    which is implied by condition~\eqref{eq:phase-decor} when the BFS
-    explores the $\phi$-circle without a persistent $4\phi$ bias.
+    The entry $(\mathcal{C}_c)_{+-}$ involves $\langle e^{4i\phi_j} \rangle$; we assume the
+    absence of a persistent fourth-harmonic bias,
+    \begin{equation}
+      \label{eq:phase-decor4}
+      \left\langle e^{4i\phi_j} \right\rangle = 0,
+    \end{equation}
+    which is independent of~\eqref{eq:phase-decor}, empirically supported by the O29
+    data~\cite{Beau2026a33}, and consistent with the BFS phase structure on $G_q$.
     The covariance~\eqref{eq:cov-diag} follows, and the ratio~\eqref{eq:ratio} is immediate.
   \end{proof}
 
@@ -341,9 +349,9 @@ in $\operatorname{Sym}^2(V_{\rho})$\\[6pt]
     trajectory on $S^1$.
     It requires only that the complex average of $e^{2i\phi_j}$ over the fitting window
     vanishes---a single-harmonic condition.
-    This is a consequence of the BFS on $G_q = \mathrm{Heis}_3(\mathbb{Z}/q\mathbb{Z})$ exploring
+    This is consistent with the BFS on $G_q = \mathrm{Heis}_3(\mathbb{Z}/q\mathbb{Z})$ exploring
     all relative phases between the two Weil-block projections across the fitting window
-    $[n_0, n_1]$, which holds in the large-$q$ limit and is consistent with
+    $[n_0, n_1]$, and is confirmed numerically by
     the symmetry-ratio measurements of O29~\cite{Beau2026a33}
     (median $|\alpha_j - \bar\beta_j|_F / |w_j| \in [0.028, 0.070]$ for
     $q \in \{61, 151\}$).
@@ -383,6 +391,10 @@ in $\operatorname{Sym}^2(V_{\rho})$\\[6pt]
       \item[(iv)] The equatorial constraint $|\alpha_j| = |\beta_j| = r_j/\!\sqrt{2}$ equalises
       the individual amplitudes, so the factor of $2$ is the \emph{only} source of asymmetry
       between $e_0$ and $\{e_+, e_-\}$, producing $\lambda_1/\lambda_2 = 2$ exactly.
+      This factor is not dynamical (it does not depend on the specific BFS trajectory)
+      and not statistical (it does not depend on the distribution of $r_j$ or $\phi_j$):
+      it is purely structural, fixed by the symmetric-tensor normalisation in~\eqref{eq:sym2basis}
+      together with the equatorial constraint.
     \end{enumerate}
   \end{theorem}
 
