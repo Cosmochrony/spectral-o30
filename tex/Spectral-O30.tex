@@ -62,7 +62,8 @@ in $\operatorname{Sym}^2(V_{\rho})$\\[6pt]
     but a purely structural consequence of three compatible structures---BI parity,
     the $\mathrm{Sym}^2(V_\rho)$ identification, and the Heisenberg grading.
     We prove that the Born--Infeld parity anti-linearity $\rho_{q-c} = \bar{\rho}_c$
-    (O18) forces every admissible trajectory vector $w_j = \pi_c(v_j) \in V_\rho \cong \mathbb{C}^2$
+    (O18) forces every admissible square-root coordinate $w_j \in V_\rho \cong \mathbb{C}^2$
+    (with $\pi_c(v_j) = w_j \otimes w_j$, $\Heff \cong \Sym^2(V_\rho)$)
     to satisfy $|\alpha_j| = |\beta_j|$, where $(\alpha_j, \beta_j)$ are the components in the
     canonical basis $\{v_+, v_-\}$ of $V_\rho$ aligned with the BI involution.
     This is the \emph{equatorial constraint}: every $w_j$ lives on an equatorial $S^1 \subset S^3$
@@ -115,11 +116,12 @@ in $\operatorname{Sym}^2(V_{\rho})$\\[6pt]
     The ratio $\lambda_1/\lambda_2 = 2$ was recorded as structurally significant but
     left without a derivation (O28 Remark~4.2).
 
-    Paper O29~\cite{Beau2026a33} carried the sector identification to completion via the
-    symmetric rank formula: the Born--Infeld parity constraint forces every outer product
-    $M_j = \pi_c(v_j) \otimes \pi_{q-c}(v_j)^* = w_j w_j^\top$ into the complex symmetric
-    subspace $\Sym(V_\rho, \mathbb{C})$, and the observed $r_{\mathrm{eff}} = 3$ uniquely identifies
-    $d_\rho = 2$ (spin-$\tfrac{1}{2}$).
+    Paper O29~\cite{Beau2026a33} identified the carrier: the Born--Infeld parity constraint forces every outer
+    product $M_j = \pi_c(v_j) \otimes \pi_{q-c}(v_j)^* = w_j w_j^\top$ to be complex symmetric, and
+    $r_{\mathrm{eff}} = 3$ is the invariant of the irreducible adjoint carrier
+    $\Heff \simeq \mathfrak{su}(2) \cong \Sym^2(V_\rho)$ (spin-$1$).
+    The spin-$\tfrac{1}{2}$ space $V_\rho \cong \mathbb{C}^2$ ($d_\rho = 2$) is the underlying doublet whose
+    Veronese square-root structure the admissible data realise.
     The eigenvalue ratio $\lambda_1/\lambda_2 = 2$ was confirmed in $\End(\Heff)$ but its
     analytical origin was stated as an open direction (O29 \S7.4, first item).
 
@@ -154,15 +156,19 @@ in $\operatorname{Sym}^2(V_{\rho})$\\[6pt]
 
   Let $\Heff = \mathbb{C}^3$ be the admissible projection subspace, with orthonormal basis
   $\{f_1, f_2, f_3\}$ as established by O23~\cite{Beau2026a27}.
-  Let $V_\rho \subseteq \Heff$ be the trajectory subspace spanned by the admissible BFS
-  vectors, with $d_\rho = \dim_{\mathbb{C}} V_\rho = 2$ as proved in O29~\cite{Beau2026a33}.
-  From O29 Equation~(2), in the canonical basis of $\Heff$,
+  Let $V_\rho \cong \mathbb{C}^2$ be the spin-$\tfrac{1}{2}$ doublet, with $d_\rho = \dim_{\mathbb{C}} V_\rho = 2$,
+  related to $\Heff$ by $\Heff \cong \Sym^2(V_\rho)$ (O29~\cite{Beau2026a33}, Q7~\cite{Beau2026q7}).
+  The observed projections $\pi_c(v_j) \in \Heff$ lie on the Veronese cone of rank-one symmetric squares;
+  lifting this square-root structure gives $w_j \in V_\rho$ with $\pi_c(v_j) = w_j \otimes w_j$.
+  Equivalently, the data in $\Heff \simeq \Sym^2(V_\rho)$ lie on the Veronese cone of rank-one symmetric squares.
+  Thus $V_\rho \simeq \mathbb{C}^2$ is used here as the square-root coordinate system of the spin-$1$ carrier
+  identified in O29, not as the quantity measured by Test~4.
+  In the canonical basis of $\Heff$ the Born--Infeld parity of O29 reads
   \begin{equation}
     \label{eq:parity-equality}
-    \pi_{q-c}(v_j) = w_j
-    \qquad \text{(leading order, with correction $O(q^{-1/2})$)},
+    \pi_{q-c}(v_j) = \overline{\pi_c(v_j)}
+    \qquad \text{(leading order, with correction $O(q^{-1/2})$)} .
   \end{equation}
-  where $w_j := \pi_c(v_j) \in V_\rho$.
 
   By O29 Proposition~4.1 (following O28~\cite{Beau2026a32}),
   \begin{equation}
