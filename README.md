@@ -1,8 +1,8 @@
 # O30 — Born–Infeld Parity Forces an Equatorial Admissible Fibre
 
 This repository contains the source of the **O30 Cosmochrony paper**
-[*Born–Infeld Parity Forces an Equatorial Admissible Fibre: Analytical Derivation
-of the $[1:\tfrac{1}{2}:\tfrac{1}{2}]$ Eigenvalue Ratio*](out/Spectral-O30.pdf).
+*Born–Infeld Parity Forces an Equatorial Admissible Fibre: Analytical Derivation
+of the $[1:\tfrac{1}{2}:\tfrac{1}{2}]$ Eigenvalue Ratio*.
 
 Papers O28–O29 established that the per-pair covariance $\mathcal{C}_c$ in
 $\operatorname{Sym}^2(V_\rho)$ has rank $r_{\mathrm{eff}} = 3$ with the invariant
