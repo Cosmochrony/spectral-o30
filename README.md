@@ -40,7 +40,6 @@ o30/
 
 ## Links
 
-- 📄 [Paper PDF](out/Spectral-O30.pdf)
 - 🔗 DOI: [10.5281/zenodo.20014707](https://doi.org/10.5281/zenodo.20014707)
 - 🌐 Website: https://cosmochrony.org/science/spectral/program/o30/
 
