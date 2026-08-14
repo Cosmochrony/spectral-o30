@@ -16,7 +16,8 @@ The ratio $\lambda_1/\lambda_2 = 2$ is **not dynamical and not statistical, but 
 structural** — a consequence of three compatible structures: Born–Infeld (BI) parity,
 the $\operatorname{Sym}^2(V_\rho)$ identification, and the Heisenberg grading.
 
-The BI parity anti-linearity $\rho_{q-c} = \bar\rho_c$ (O18) forces every admissible
+The anti-linear conjugation identity $\rho_{q-c} = \bar\rho_c$ (O17; recalled in O18
+Theorem 3.1) forces every admissible
 square-root coordinate $w_j \in V_\rho \cong \mathbb{C}^2$ to satisfy $|\alpha_j| = |\beta_j|$
 — the **equatorial constraint**: each $w_j$ lives on an equatorial $S^1 \subset S^3$, with
 $w_j = (r_j/\sqrt2)(e^{i\phi_j}v_+ + e^{-i\phi_j}v_-)$. In this regime the central component
