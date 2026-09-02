@@ -1,5 +1,10 @@
 \documentclass[11pt,a4paper]{article}
 
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\input{glyphtounicode}
+\pdfgentounicode=1
 \usepackage{amsmath,amssymb,amsthm}
 \usepackage{mathtools}
 \usepackage{hyperref}
@@ -11,10 +16,9 @@
 \geometry{margin=2.5cm}
 
 \hypersetup{
-  colorlinks=true,
-  linkcolor=blue,
-  citecolor=blue,
-  urlcolor=blue
+  hidelinks,
+  pdftitle={A Conditional 3x3 Model on Sym2(Vrho): Equatorial Fibres from a Fixed Symmetric Square, and the Exact Decorrelation Conditions for its Spectrum},
+  pdfauthor={Jérôme Beau}
 }
 
 \newtheorem{theorem}{Theorem}[section]
@@ -35,54 +39,55 @@
 \newcommand{\BI}{\mathrm{BI}}
 \newcommand{\bfv}{{\boldsymbol{v}}}
 
-\title{Born--Infeld Parity Forces an Equatorial Admissible Fibre:\\
-Analytical Derivation of the $[1:\tfrac{1}{2}:\tfrac{1}{2}]$ Eigenvalue Ratio
-in $\operatorname{Sym}^2(V_{\rho})$\\[6pt]
+\title{A Conditional $3\times3$ Model on $\operatorname{Sym}^2(V_{\rho})$:\\
+Equatorial Fibres from a Fixed Symmetric Square, and the Exact Decorrelation
+Conditions for its Spectrum\\[6pt]
 {\large O30 of the Cosmochrony Spectral Admissibility Sub-Programme}}
 
 \author{J\'{e}r\^{o}me Beau\\[4pt]
 \small Independent Researcher\\
 \small \texttt{jerome.beau@cosmochrony.org}}
 
-\date{2026}
+\date{2026\\[2pt]\small Version 2.0}
 
 \begin{document}
 
   \maketitle
 
   \begin{abstract}
-    Papers O28--O29 of the Cosmochrony spectral admissibility sub-programme established
-    that the per-pair covariance $\mathcal{C}_c$ in $\operatorname{Sym}^2(V_\rho)$ has
-    rank $r_{\mathrm{eff}} = 3$ with invariant eigenvalue structure
-    $[\lambda_1 : \lambda_2 : \lambda_3] = [1 : \tfrac{1}{2} : \tfrac{1}{2}]$, and
-    identified this as an open problem requiring an analytical explanation.
-    The present paper provides the complete derivation.
-    This is the first analytical derivation of the invariant covariance spectrum observed in O28:
-    the ratio $\lambda_1/\lambda_2 = 2$ is not dynamical, not statistical,
-    but a purely structural consequence of three compatible structures---BI parity,
-    the $\mathrm{Sym}^2(V_\rho)$ identification, and the Heisenberg grading.
-    We prove that the anti-linear conjugation identity $\rho_{q-c} = \bar{\rho}_c$
-    (O17; recalled in O18 Theorem~3.1) forces every admissible square-root coordinate
-    $w_j \in V_\rho \cong \mathbb{C}^2$
-    (with $\pi_c(v_j) = w_j \otimes w_j$, $\Heff \cong \Sym^2(V_\rho)$)
-    to satisfy $|\alpha_j| = |\beta_j|$, where $(\alpha_j, \beta_j)$ are the components in the
-    canonical basis $\{v_+, v_-\}$ of $V_\rho$ aligned with the BI involution.
-    This is the \emph{equatorial constraint}: every $w_j$ lives on an equatorial $S^1 \subset S^3$
-    in $V_\rho$, admitting the canonical form
-    $w_j = (r_j/\!\sqrt{2})(e^{i\phi_j} v_+ + e^{-i\phi_j} v_-)$.
-    In the equatorial regime, the central component $\sqrt{2}\,\alpha_j \beta_j$ of
-    $\operatorname{vec}(M_j)$ is \emph{phase-independent} (equal to $r_j^2/\!\sqrt{2}$ for all $j$),
-    while the two diagonal components $\alpha_j^2$ and $\beta_j^2$ oscillate as $e^{\pm 2i\phi_j}$.
-    The covariance then diagonalises immediately under the single condition
-    $\langle e^{2i\phi_j} \rangle = 0$ (phase decorrelation), yielding
-    $\mathcal{C}_c = \operatorname{diag}\!\bigl(\tfrac{1}{4}, \tfrac{1}{2}, \tfrac{1}{4}\bigr) \langle r_j^4 \rangle$
-    and spectral ratio $[2:1:1]$, normalised $[1:\tfrac{1}{2}:\tfrac{1}{2}]$.
-    The factor of~$2$ is traced to the degree-$2$ Carnot weight of the central generator
-    $Z = [X, Y]$ in $\mathrm{Heis}_3$: the bilinear term $\sqrt{2}\,\alpha_j\beta_j$
-    concentrates exactly twice the covariance of each pure-degree-$1$ term $\alpha_j^2$ or $\beta_j^2$.
-    The correction to the equatorial condition is $O(q^{-1/2})$ from the universality rate
-    of~\cite{Beau2026u1}, consistent with the symmetry-ratio measurements of O29~\cite{Beau2026a33}.
-    This closes the open direction explicitly stated in O28~\cite{Beau2026a32} and O29~\cite{Beau2026a33}.
+    \noindent\textbf{Status.}
+    The covariance studied here is a conditional $3\times3$ model on $\Sym^2(V_\rho)$.
+    It is not the $9\times9$ covariance on $\End(\Heff)$ measured in O28, and it
+    does not provide an analytical account of its spectrum.
+
+    Assume that the admissible data lie on the Veronese cone of rank-one symmetric squares, so that
+    each observed projection is $\pi_c(v_j) = w_j \otimes w_j$ for some $w_j \in V_\rho \cong
+    \mathbb{C}^2$; assume a canonical inter-block identification together with the exchanged
+    anti-linear involution $\BI$ on the doublet; and assume that the projected point is fixed at the
+    level of the symmetric square.
+    Then $\BI(w_j) = \varepsilon_j w_j$ with $\varepsilon_j \in \{\pm 1\}$, and the doublet
+    coordinates satisfy the equatorial constraint $|\alpha_j| = |\beta_j|$, with
+    $w_j = (r_j/\!\sqrt{2})\,(e^{i\phi_j} v_+ + \varepsilon_j e^{-i\phi_j} v_-)$.
+    The sign $\varepsilon_j$ is not removable by a consistent choice of square root; it is carried
+    through the argument.
+
+    For the resulting $3\times3$ covariance on $\Sym^2(V_\rho)$, the diagonal form
+    $\operatorname{diag}(\tfrac14,\tfrac12,\tfrac14)\langle r_j^4 \rangle$, of normalised spectrum
+    $[1 : \tfrac{1}{2} : \tfrac{1}{2}]$, holds precisely under the two weighted conditions
+    \[
+      \bigl\langle \varepsilon_j\, r_j^4\, e^{2i\phi_j} \bigr\rangle = 0,
+      \qquad
+      \bigl\langle r_j^4\, e^{4i\phi_j} \bigr\rangle = 0 .
+    \]
+    Neither follows from the unweighted second-harmonic condition
+    $\langle e^{2i\phi_j}\rangle = 0$, and no amplitude--phase independence is assumed.
+    The factor of $2$ between the central and the weight-$\pm1$ eigenvalues is the squared
+    symmetric-tensor normalisation. The Carnot grading labels the central direction $Z=[X,Y]$ that
+    carries it; it is not the algebraic cause of the factor.
+
+    The $9\times9$ covariance ratio measured in O28 remains an empirical result, without the
+    analytical account previously attributed to this paper.
+    O28 is cited here as external motivation only; no derivation runs from it to this model.
   \end{abstract}
 
   \paragraph{Keywords.}
@@ -99,7 +104,7 @@ in $\operatorname{Sym}^2(V_{\rho})$\\[6pt]
   \section{Position of the Problem}
   \label{sec:position}
 
-  \subsection{What O28--O29 established and left open}
+  \subsection{What O28--O29 measured and left open}
 
     Paper O28~\cite{Beau2026a32} measured the per-pair covariance
     $\mathcal{C}_c \in \End(\Heff)$ from the Q5a-O5 BFS checkpoints.
@@ -108,9 +113,8 @@ in $\operatorname{Sym}^2(V_{\rho})$\\[6pt]
       \label{eq:empirical}
       [\lambda_1 : \lambda_2 : \lambda_3] = \bigl[1 : \tfrac{1}{2} : \tfrac{1}{2}\bigr],
     \end{equation}
-    holding for every conjugate pair $(c, q-c)$ and every prime $q \in \{29, 61, 101, 151\}$
-    with zero inter-pair variance at $q \in \{29, 101\}$ and negligible variance at
-    $q \in \{61, 151\}$.
+    holding for every conjugate pair $(c, q-c)$ at $q \in \{61, 101, 151\}$, and at $q = 29$ for
+    the five non-empty pairs out of fourteen to which O28 restricts its statement there.
     O28 identified two structural features: the exact degeneracy $\lambda_2 = \lambda_3$
     was attributed to the conjugation identity $\rho_{q-c} = \bar{\rho}_c$ (an O17 theorem,
     recalled in O18 Theorem~3.1~\cite{Beau2026a22}),
@@ -118,38 +122,87 @@ in $\operatorname{Sym}^2(V_{\rho})$\\[6pt]
     The ratio $\lambda_1/\lambda_2 = 2$ was recorded as structurally significant but
     left without a derivation (O28 Remark~4.2).
 
-    Paper O29~\cite{Beau2026a33} identified the carrier: the Born--Infeld parity constraint forces every outer
-    product $M_j = \pi_c(v_j) \otimes \pi_{q-c}(v_j)^* = w_j w_j^\top$ to be complex symmetric, and
-    $r_{\mathrm{eff}} = 3$ is the invariant of the irreducible adjoint carrier
-    $\Heff \simeq \mathfrak{su}(2) \cong \Sym^2(V_\rho)$ (spin-$1$).
-    The spin-$\tfrac{1}{2}$ space $V_\rho \cong \mathbb{C}^2$ ($d_\rho = 2$) is the underlying doublet whose
-    Veronese square-root structure the admissible data realise.
+    Paper O29~\cite{Beau2026a33} reports finite-checkpoint numerical rank, constraint-algebra, and
+    commutant diagnostics compatible with a supplied adjoint carrier; it does not identify that
+    carrier from the data.
+    O29's vectors are $w_j = \pi_c(v_j) \in \Heff = \mathbb{C}^3$ and its outer products lie in
+    $\Sym^2(\mathbb{C}^3)$, inside the nine-dimensional ambient $\End(\mathbb{C}^3)$ used by O28.
+    Its hard $6 \to 3$ rank statement concerns the span of squares of vectors already in
+    $\mathbb{C}^3$; it does \emph{not} produce a $\mathbb{C}^2$ square root for each observed
+    $\mathbb{C}^3$ vector.
+    That square root is assumed here, as hypothesis (H0) of \S\ref{ssec:hyp}, and it is what makes
+    the present model a different object.
     The eigenvalue ratio $\lambda_1/\lambda_2 = 2$ was confirmed in $\End(\Heff)$ but its
     analytical origin was stated as an open direction (O29 \S7.4, first item).
 
-    The present paper closes this direction.
+    The present paper gives a conditional account of that direction.
+    The account is conditional in a precise sense: the Born--Infeld relation holds between the
+    sectors $c$ and $q-c$, and turning it into a constraint on a single admissible vector requires
+    the hypotheses collected in \S\ref{ssec:hyp}.
+    Those hypotheses are not derived here.
+
+  \subsection{Hypotheses of the model}
+    \label{ssec:hyp}
+
+    \begin{enumerate}
+      \item[(H0)] \emph{Veronese data.} The admissible projections lie on the cone of rank-one
+      symmetric squares: for each $j$ there is $w_j \in V_\rho \cong \mathbb{C}^2$ with
+      $\pi_c(v_j) = w_j \otimes w_j$.
+      This is an assumption about the data, not a consequence of $(\Heff)_{\mathbb{C}} \cong
+      \Sym^2(V_\rho)$: identifying the carrier as a three-dimensional representation does not place
+      its vectors on the Veronese cone.
+      \item[(H1)] \emph{Inter-block identification.} A canonical linear map
+      $I \colon \Heff^{(q-c)} \to \Heff^{(c)}$ is given, so that the anti-linear relation between
+      the sectors $c$ and $q-c$ becomes an anti-linear involution of one sector.
+      \item[(H2)] \emph{Weight exchange.} The involution acts on the doublet basis by
+      $v_+ \leftrightarrow v_-$, so that the transported map is
+      $\BI \colon \alpha v_+ + \beta v_- \mapsto \bar\beta\, v_+ + \bar\alpha\, v_-$.
+      Complex conjugation alone, without this exchange, imposes only that the $\Sym^2$ coordinates
+      be real, which does \emph{not} imply $|\alpha| = |\beta|$: the vector $w = v_+$, with
+      $\operatorname{vec}(w \otimes w) = (1,0,0)$, satisfies the former and violates the latter.
+      \item[(H3)] \emph{Fixed symmetric square.} The projected point is fixed by the transported
+      involution \emph{at the level of the symmetric square}:
+      \[
+        \Sym^2(\BI)\,(w_j \otimes w_j) = w_j \otimes w_j .
+      \]
+    \end{enumerate}
+
+    (H3) is a genuine premise and is not supplied by (H1)--(H2): an anti-linear involution of a
+    sector does not make every vector of that sector a fixed point.
+    Nor is it supplied by a consistent choice of square root: choosing a root consistently does not
+    determine whether the lifted involution acts with the plus or the minus sign, and
+    Theorem~\ref{thm:equatorial} shows that both occur.
+
+    Two further conditions are required by Theorem~\ref{thm:spectrum} and by nothing else; they are
+    stated there and are independent of (H0)--(H3).
 
   \subsection{Scope of O30}
 
     We provide three results. Theorem~\ref{thm:equatorial} derives the equatorial constraint on the
-    admissible fibre from the BI anti-linearity. Theorem~\ref{thm:spectrum} computes the covariance
-    spectrum for equatorial trajectories. Theorem~\ref{thm:carnot} traces the factor of $2$ to the
-    degree-$2$ Carnot weight of the central generator in $\mathrm{Heis}_3$.
-
-    The correction to the equatorial condition is $O(q^{-1/2})$, established via the universality
-    rate of U1~\cite{Beau2026u1}.
-    Phase decorrelation---the single condition $\langle e^{2i\phi_j} \rangle = 0$---is
-    consistent with the BFS exploration of the Weil representation and confirmed numerically,
-    but is not derived here; it does not require full ergodicity of the trajectory.
+    admissible fibre from the BI anti-linearity \emph{together with} (H0)--(H3) of
+    \S\ref{ssec:hyp}. Theorem~\ref{thm:spectrum} computes the covariance spectrum for equatorial
+    trajectories. Theorem~\ref{thm:carnot} isolates the symmetric-tensor normalisation responsible
+    for the factor of $2$. If separately supplied, the Carnot grading labels the direction carrying
+    that factor; it is not used in the derivation.
+    The spectrum of the model requires the two \emph{weighted} conditions
+    $\langle \varepsilon_j r_j^4 e^{2i\phi_j}\rangle = 0$ and
+    $\langle r_j^4 e^{4i\phi_j}\rangle = 0$ (Theorem~\ref{thm:spectrum}).
+    The unweighted condition $\langle e^{2i\phi_j}\rangle = 0$ does not imply either
+    (Remark~\ref{rem:countermodels}).
+    Neither weighted condition is derived here, and neither has empirical support in the cited
+    sources.
 
   \section{Setup and Notation}
   \label{sec:setup}
 
   We follow the notation of O25~\cite{Beau2026a29} and O29~\cite{Beau2026a33}.
-  Let $q$ be an odd prime, $G_q = \mathrm{Heis}_3(\mathbb{Z}/q\mathbb{Z})$, and let
-  $\rho_c$ denote the character-$c$ Weil representation of $G_q$ on $\ell^2(\mathbb{Z}/q\mathbb{Z})$
-  for $c \in (\mathbb{Z}/q\mathbb{Z})^\times$.
-  The conjugation identity (an O17 theorem, recalled in O18 Theorem~3.1~\cite{Beau2026a22})
+  Let $q$ be an odd prime and $G_q = \mathrm{Heis}_3(\mathbb{Z}/q\mathbb{Z})$.
+  For $c \in (\mathbb{Z}/q\mathbb{Z})^\times$, Stone--von Neumann supplies the character-$c$
+  Heisenberg--Schr\"odinger representation of $G_q$ on $\ell^2(\mathbb{Z}/q\mathbb{Z})$.
+  After the additional symplectic data are chosen, $\rho_c$ denotes the distinct associated Weil
+  action on that space; it is not a representation of $G_q$.
+  The Weil-action conjugation identity (an O17 theorem, recalled in O18
+  Theorem~3.1~\cite{Beau2026a22})
   gives
   \begin{equation}
     \label{eq:biparity}
@@ -160,21 +213,34 @@ in $\operatorname{Sym}^2(V_{\rho})$\\[6pt]
   Let $\Heff = \mathbb{C}^3$ be the admissible projection subspace, with orthonormal basis
   $\{f_1, f_2, f_3\}$ as supplied by the conditional carrier of O23~\cite{Beau2026a27}
   (Theorem~3.1 there; the carrier selection is an open bridge).
+  A typing convention is fixed here and used throughout: O23 and O27~\cite{Beau2026a31} state the
+  admissible neutral traceless sector as a \emph{real} three-dimensional space,
+  $\dim_{\mathbb{R}} H_{\mathrm{eff}} = 3$, isomorphic to $\mathfrak{su}(2) \cong \operatorname{Im}
+  \mathbb{H}$.
+  The space $\Heff = \mathbb{C}^3$ used here and in O29 is its complexification,
+  $\mathfrak{su}(2) \otimes_{\mathbb{R}} \mathbb{C} \cong \mathfrak{sl}(2,\mathbb{C}) \cong
+  \Sym^2(V_\rho)$, which is the space in which the covariance $\Cc$ is computed.
+  The two statements are not in conflict, and no argument below transfers a real-dimension count to
+  the complex space or conversely.
   Let $V_\rho \cong \mathbb{C}^2$ be the spin-$\tfrac{1}{2}$ doublet, with $d_\rho = \dim_{\mathbb{C}} V_\rho = 2$,
-  related to $\Heff$ by $\Heff \cong \Sym^2(V_\rho)$ (O29~\cite{Beau2026a33}, Q7~\cite{Beau2026q7}).
-  The observed projections $\pi_c(v_j) \in \Heff$ lie on the Veronese cone of rank-one symmetric squares;
-  lifting this square-root structure gives $w_j \in V_\rho$ with $\pi_c(v_j) = w_j \otimes w_j$.
-  Equivalently, the data in $\Heff \simeq \Sym^2(V_\rho)$ lie on the Veronese cone of rank-one symmetric squares.
-  Thus $V_\rho \simeq \mathbb{C}^2$ is used here as the square-root coordinate system of the spin-$1$ carrier
-  identified in O29, not as the quantity measured by Test~4.
-  In the canonical basis of $\Heff$ the Born--Infeld parity of O29 reads
+  related to $\Heff$ by the supplied model identification $\Heff \cong \Sym^2(V_\rho)$.
+  Hypothesis (H0) of \S\ref{ssec:hyp} \emph{assumes} that the observed projections
+  $\pi_c(v_j) \in \Heff$ lie on the Veronese cone of rank-one symmetric squares of a doublet, so
+  that $\pi_c(v_j) = w_j \otimes w_j$ with $w_j \in V_\rho \cong \mathbb{C}^2$.
+  This is not established by the finite-data diagnostics: naming $(\Heff)_{\mathbb{C}}$ as a
+  three-dimensional representation isomorphic to $\Sym^2(V_\rho)$ does not place its vectors on that
+  cone.
+  Under (H0), $V_\rho$ is the square-root coordinate system of the model, not the quantity measured
+  by Test~4.
+  Written in a basis common to the sectors $c$ and $q-c$ --- that is, under hypothesis (H1) of
+  \S\ref{ssec:hyp}, which supplies the identification making such a common basis meaningful ---
+  the Born--Infeld parity of O29 reads
   \begin{equation}
     \label{eq:parity-equality}
-    \pi_{q-c}(v_j) = \overline{\pi_c(v_j)}
-    \qquad \text{(leading order, with correction $O(q^{-1/2})$)} .
+    \pi_{q-c}(v_j) = \overline{\pi_c(v_j)} .
   \end{equation}
 
-  By O29 Proposition~4.1 (following O28~\cite{Beau2026a32}),
+  As part of the supplied model data, set
   \begin{equation}
     \label{eq:sym2}
     \Heff \cong \Sym^2(V_\rho)
@@ -210,76 +276,131 @@ in $\operatorname{Sym}^2(V_{\rho})$\\[6pt]
   \section{Equatorial Constraint from Born--Infeld Parity}
   \label{sec:equatorial}
 
-  \begin{theorem}[Equatorial constraint]
+  \begin{theorem}[Sign-carrying equatorial constraint]
     \label{thm:equatorial}
-    Let $w_j = \alpha_j v_+ + \beta_j v_- \in V_\rho$ be any admissible trajectory vector.
-    The Born--Infeld parity anti-linearity $\rho_{q-c} = \bar\rho_c$ forces
+    Assume (H0)--(H3) of \S\ref{ssec:hyp}, let $j$ be an index with $\pi_c(v_j) \neq 0$, and write
+    $w_j = \alpha_j v_+ + \beta_j v_- \in V_\rho$, so that $w_j \neq 0$.
+    Then there exists $\varepsilon_j \in \{\pm 1\}$ with
+    \begin{equation}
+      \label{eq:eigen-sign}
+      \BI(w_j) = \varepsilon_j\, w_j ,
+      \qquad\text{equivalently}\qquad
+      \beta_j = \varepsilon_j\, \overline{\alpha_j} ,
+    \end{equation}
+    and consequently
     \begin{equation}
       \label{eq:equatorial}
-      |\alpha_j| = |\beta_j| = \frac{\|w_j\|}{\sqrt{2}}.
+      |\alpha_j| = |\beta_j| = \frac{\|w_j\|}{\sqrt{2}} .
     \end{equation}
-    Equivalently, $w_j$ lies on an equatorial $S^1 \subset S^3$ in $V_\rho$ and admits the
-    canonical form
+    Equivalently, $w_j$ lies on an equatorial $S^1 \subset S^3$ in $V_\rho$ and admits the form
     \begin{equation}
       \label{eq:equatorial-form}
-      w_j = \frac{r_j}{\sqrt{2}}\bigl(e^{i\phi_j}\, v_+ + e^{-i\phi_j}\, v_-\bigr),
+      w_j = \frac{r_j}{\sqrt{2}}\bigl(e^{i\phi_j}\, v_+
+      + \varepsilon_j\, e^{-i\phi_j}\, v_-\bigr),
       \qquad r_j = \|w_j\|,\quad \phi_j \in [0, 2\pi).
     \end{equation}
-    The correction to~\eqref{eq:equatorial} is $O(q^{-1/2})$ from the universality rate
-    of~\cite{Beau2026u1}.
+    The sign $\varepsilon_j$ may vary with $j$ and is not removable by a consistent choice of
+    square root.
   \end{theorem}
 
   \begin{proof}
-    The BI parity result~\eqref{eq:biparity} is anti-linear: the map $\rho_c \mapsto \rho_{q-c}$
-    is complex conjugation on the representation space.
-    In terms of the canonical basis $\{v_+, v_-\}$ of $V_\rho$, which was established by
-    O27~\cite{Beau2026a31} as the unique spin-$\tfrac{1}{2}$ basis compatible with the
-    $\mathfrak{su}(2)$ factorisation, the BI conjugation acts by
+    The BI parity result~\eqref{eq:biparity} is anti-linear and relates the sector $c$ to the
+    sector $q-c$.
+    By (H1) the two sectors are identified, so the relation becomes an anti-linear map of one
+    sector.
+    In the weight basis $\{v_+, v_-\}$ of $V_\rho$, i.e.\ the eigenbasis of the Cartan generator
+    $J_3$ of the supplied carrier, and by (H2), it acts by
     \begin{equation}
       \label{eq:bi-action}
-      \mathrm{BI}: \alpha v_+ + \beta v_- \;\longmapsto\; \bar\alpha\, v_- + \bar\beta\, v_+.
+      \BI \colon \alpha v_+ + \beta v_- \;\longmapsto\; \bar\beta\, v_+ + \bar\alpha\, v_- .
     \end{equation}
-    This follows from the anti-linearity of complex conjugation combined with the exchange
-    $v_+ \leftrightarrow v_-$ that the involution $c \leftrightarrow q-c$ induces on the
-    weight basis (since the character index $c$ labels the weight, and $q-c$ is the conjugate
-    weight).
+    The exchange $v_+ \leftrightarrow v_-$ is hypothesis (H2); it is what distinguishes $\BI$ from
+    bare complex conjugation, and it carries the conclusion.
 
-    The admissibility condition~\eqref{eq:parity-equality}, $\pi_{q-c}(v_j) = w_j$, states
-    that the BI-conjugate projection of $v_j$ equals its $c$-projection $w_j$.
-    At leading order (the $O(q^{-1/2})$ correction is controlled by U1~\cite{Beau2026u1}),
-    this reads $\mathrm{BI}(w_j) = w_j$, i.e.,
-    \begin{equation}
-      \bar\alpha_j\, v_- + \bar\beta_j\, v_+ = \alpha_j\, v_+ + \beta_j\, v_-.
-    \end{equation}
-    Comparing coefficients: $\alpha_j = \bar\beta_j$.
-    Writing $\alpha_j = (r_j/\!\sqrt{2})\,e^{i\phi_j}$ determines
-    $\beta_j = \bar\alpha_j = (r_j/\!\sqrt{2})\,e^{-i\phi_j}$, which
-    gives $|\alpha_j| = |\beta_j| = r_j/\!\sqrt{2} = \|w_j\|/\!\sqrt{2}$ and the
-    canonical form~\eqref{eq:equatorial-form}.
+    By (H0) the datum is $w_j \otimes w_j$, and by (H3)
+    $\Sym^2(\BI)(w_j \otimes w_j) = w_j \otimes w_j$, i.e.
+    $\BI(w_j) \otimes \BI(w_j) = w_j \otimes w_j$.
+    A \emph{non-zero} vector of $V_\rho$ is determined by its symmetric square up to sign --- this
+    is where $w_j \neq 0$ is used --- so $\BI(w_j) = \varepsilon_j w_j$ for some
+    $\varepsilon_j \in \{\pm 1\}$.
+    This is the whole content of (H3): fixing the projected point at the level of the symmetric
+    square determines the lift only up to that sign, and the sign is therefore an output of the
+    hypothesis, not a convention to be chosen away.
+
+    Writing~\eqref{eq:eigen-sign} in coordinates with $\BI$ as in~\eqref{eq:bi-action} gives
+    $\bar\beta_j = \varepsilon_j \alpha_j$ and $\bar\alpha_j = \varepsilon_j \beta_j$; the two are
+    equivalent since $\varepsilon_j^2 = 1$, and either yields
+    $\beta_j = \varepsilon_j \overline{\alpha_j}$.
+    Hence $|\beta_j| = |\alpha_j|$, and $\|w_j\|^2 = |\alpha_j|^2 + |\beta_j|^2 = 2|\alpha_j|^2$
+    gives~\eqref{eq:equatorial}.
+    Setting $\alpha_j = (r_j/\!\sqrt{2}) e^{i\phi_j}$ gives
+    $\beta_j = \varepsilon_j (r_j/\!\sqrt{2}) e^{-i\phi_j}$, which
+    is~\eqref{eq:equatorial-form}.
   \end{proof}
+
+  \begin{remark}[The sign cannot be absorbed]
+    \label{rem:sign}
+    Replacing $w_j$ by $-w_j$ leaves $w_j \otimes w_j$ unchanged and leaves $\varepsilon_j$
+    unchanged, since $\BI(-w_j) = -\BI(w_j) = \varepsilon_j(-w_j)$.
+    The sign is therefore an invariant of the datum under the only freedom that (H0) leaves, and it
+    propagates into the covariance through the central component
+    of~\eqref{eq:vecM}.
+    An alternative is to add, as a further explicit hypothesis, that the lift is fixed with
+    $\varepsilon_j \equiv +1$; the present paper does not assume this.
+  \end{remark}
+
+  \begin{remark}[Null projected points and the averaging convention]
+    \label{rem:null}
+    A single convention is used throughout:
+    $\langle \cdot \rangle = N_{\mathrm{total}}^{-1} \sum_j$, the sum running over the whole fitting
+    window $[n_0, n_1]$ and $N_{\mathrm{total}}$ being its cardinality.
+    The denominator is never changed.
+
+    For an index with $\pi_c(v_j) = 0$ the sign $\varepsilon_j$ is not determined by
+    Theorem~\ref{thm:equatorial}, since the zero vector is not fixed up to sign by its symmetric
+    square.  Set $\varepsilon_j := +1$ there; the choice is immaterial because $\varepsilon_j$
+    occurs only multiplied by $r_j^4 = 0$.
+    Such indices contribute $\operatorname{vec}(M_j) = 0$ to~\eqref{eq:cov} and therefore change
+    nothing.
+
+    Renormalising on the non-null subset would multiply $\Cc$ and every non-zero eigenvalue by
+    $N_{\mathrm{total}}/N_{\mathrm{nonzero}}$; only the normalised ratio~\eqref{eq:ratio} would be
+    unaffected.  That renormalisation is not performed anywhere in this paper.
+  \end{remark}
 
   \begin{remark}[Geometric interpretation]
     \label{rem:geometry}
-    The equatorial constraint~\eqref{eq:equatorial-form} is a \emph{real section} condition:
-    the trajectory $\{w_j\}$ is confined to the real $2$-dimensional submanifold
-    $\{(\alpha, \bar\alpha) : \alpha \in \mathbb{C}\} \cong \mathbb{C}$ within $V_\rho \cong \mathbb{C}^2$.
-    Projectivised, this is the equatorial great circle $S^1 \subset \mathbb{CP}^1 \cong S^2$.
-    It is not a Lagrangian submanifold in the symplectic sense, but a totally real submanifold
-    in the complex-geometric sense: the $\mathbb{C}$-linear span of $\{w_j\}$ is all of
-    $V_\rho = \mathbb{C}^2$, consistent with $d_\rho = 2$.
+    The equatorial constraint~\eqref{eq:equatorial-form} is a \emph{real section} condition, and it
+    has two branches, one for each value of the sign $\varepsilon_j$ of
+    Theorem~\ref{thm:equatorial}: the trajectory is confined to
+    \[
+      \{(\alpha, \varepsilon\bar\alpha) : \alpha \in \mathbb{C}\} \cong \mathbb{C},
+      \qquad \varepsilon \in \{+1, -1\},
+    \]
+    two real $2$-dimensional linear subspaces of $V_\rho \cong \mathbb{C}^2$ meeting only at the origin.
+    Indices with $\varepsilon_j = -1$ lie on the second branch; the argument nowhere assumes a single
+    branch.
+    For the standard symplectic form on $\mathbb{C}^2$, each branch is Lagrangian and totally real.
+    Their projectivisations define the same equatorial great circle in
+    $\mathbb{CP}^1 \cong S^2$; the sign change is a projective phase shift, not a second circle.
+    Under (H0) the doublet $V_\rho \cong \mathbb{C}^2$ is the assumed square-root coordinate system;
+    the complex dimension two is part of that hypothesis and is not measured.
   \end{remark}
 
   \section{Covariance Spectrum for Equatorial Trajectories}
   \label{sec:spectrum}
 
-  \begin{theorem}[Covariance spectrum]
+  \begin{theorem}[Covariance spectrum of the $3\times3$ model]
     \label{thm:spectrum}
-    Suppose the trajectory $\{w_j\}$ satisfies the equatorial condition~\eqref{eq:equatorial-form}
-    and the phase decorrelation condition
+    Assume (H0)--(H3), so that Theorem~\ref{thm:equatorial} applies, and assume the two
+    \emph{weighted} decorrelation conditions
     \begin{equation}
       \label{eq:phase-decor}
-      \left\langle e^{2i\phi_j} \right\rangle := \frac{1}{N} \sum_{j=n_0}^{n_1} e^{2i\phi_j} = 0.
+      \bigl\langle \varepsilon_j\, r_j^4\, e^{2i\phi_j} \bigr\rangle = 0 ,
+      \qquad
+      \bigl\langle r_j^4\, e^{4i\phi_j} \bigr\rangle = 0 ,
     \end{equation}
+    where $\langle \cdot \rangle$ denotes the average over $j \in [n_0, n_1]$.
     Then the covariance $\mathcal{C}_c$ defined in~\eqref{eq:cov} is diagonal in the
     $\{e_+, e_0, e_-\}$ basis:
     \begin{equation}
@@ -295,240 +416,293 @@ in $\operatorname{Sym}^2(V_{\rho})$\\[6pt]
     \end{equation}
     where $\lambda_1$ is the eigenvalue on $e_0$ (weight $0$) and
     $\lambda_2 = \lambda_3$ are the degenerate eigenvalues on $\{e_+, e_-\}$ (weights $\pm 1$).
+    Conditions~\eqref{eq:phase-decor} are necessary as well as sufficient for
+    diagonality.
   \end{theorem}
 
   \begin{proof}
-    Substituting the equatorial form~\eqref{eq:equatorial-form} into~\eqref{eq:vecM}:
+    Substituting the sign-carrying equatorial form~\eqref{eq:equatorial-form}
+    into~\eqref{eq:vecM}, and using $\varepsilon_j^2 = 1$:
     \begin{align}
       \alpha_j^2 &= \frac{r_j^2}{2}\, e^{2i\phi_j}, \label{eq:comp1}\\
       \sqrt{2}\,\alpha_j \beta_j
-      &= \sqrt{2} \cdot \frac{r_j}{\sqrt{2}}\, e^{i\phi_j} \cdot \frac{r_j}{\sqrt{2}}\, e^{-i\phi_j}
-      = \frac{r_j^2}{\sqrt{2}}, \label{eq:comp2}\\
+      &= \sqrt{2}\cdot \frac{r_j}{\sqrt{2}} e^{i\phi_j}
+        \cdot \varepsilon_j \frac{r_j}{\sqrt{2}} e^{-i\phi_j}
+      = \varepsilon_j\, \frac{r_j^2}{\sqrt{2}}, \label{eq:comp2}\\
       \beta_j^2 &= \frac{r_j^2}{2}\, e^{-2i\phi_j}. \label{eq:comp3}
     \end{align}
-    The central component~\eqref{eq:comp2} is \emph{real and phase-independent}: the phases
-    $e^{i\phi_j}$ and $e^{-i\phi_j}$ cancel exactly in the bilinear product $\alpha_j \beta_j$.
+    The central component~\eqref{eq:comp2} is real and phase-independent, but it carries the sign
+    $\varepsilon_j$; the outer components do not.
 
-    The diagonal entries of $\mathcal{C}_c$ are:
-    \begin{align}
-      (\mathcal{C}_c)_{++}
-      &= \frac{1}{N}\sum_j |\alpha_j^2|^2
-      = \frac{1}{N}\sum_j \frac{r_j^4}{4}
-      = \frac{\langle r_j^4 \rangle}{4}, \label{eq:c11}\\
-      (\mathcal{C}_c)_{00}
-      &= \frac{1}{N}\sum_j \bigl|\sqrt{2}\,\alpha_j\beta_j\bigr|^2
-      = \frac{1}{N}\sum_j \frac{r_j^4}{2}
-      = \frac{\langle r_j^4 \rangle}{2}, \label{eq:c22}\\
-      (\mathcal{C}_c)_{--}
-      &= \frac{1}{N}\sum_j |\beta_j^2|^2
-      = \frac{1}{N}\sum_j \frac{r_j^4}{4}
-      = \frac{\langle r_j^4 \rangle}{4}. \label{eq:c33}
-    \end{align}
-    For the off-diagonal entries, every term involves at least one factor of
-    $e^{\pm 2i\phi_j}$:
+    The diagonal entries are unaffected by the sign, since $|\varepsilon_j| = 1$:
+    \[
+      (\mathcal{C}_c)_{++} = (\mathcal{C}_c)_{--} = \frac{\langle r_j^4 \rangle}{4},
+      \qquad
+      (\mathcal{C}_c)_{00} = \frac{\langle r_j^4 \rangle}{2}.
+    \]
+    The off-diagonal entries are, with no factorisation of averages,
     \begin{align}
       (\mathcal{C}_c)_{+0}
-      &= \frac{1}{N}\sum_j \frac{r_j^2}{2}\, e^{2i\phi_j} \cdot \frac{r_j^2}{\sqrt{2}}
-      = \frac{\langle r_j^4 \rangle}{2\sqrt{2}}\,
-      \left\langle e^{2i\phi_j} \right\rangle = 0, \\
+      &= \frac{1}{N}\sum_j \frac{r_j^2}{2}\, e^{2i\phi_j}
+         \cdot \varepsilon_j \frac{r_j^2}{\sqrt{2}}
+      = \frac{1}{2\sqrt{2}}\,
+        \bigl\langle \varepsilon_j\, r_j^4\, e^{2i\phi_j} \bigr\rangle,
+        \label{eq:c12}\\
       (\mathcal{C}_c)_{+-}
-      &= \frac{1}{N}\sum_j \frac{r_j^2}{2}\, e^{2i\phi_j} \cdot \frac{r_j^2}{2}\, e^{2i\phi_j}
-      = \frac{\langle r_j^4 \rangle}{4}\,
-      \left\langle e^{4i\phi_j} \right\rangle, \label{eq:c13}\\
+      &= \frac{1}{N}\sum_j \frac{r_j^2}{2}\, e^{2i\phi_j}
+         \cdot \frac{r_j^2}{2}\, e^{2i\phi_j}
+      = \frac{1}{4}\, \bigl\langle r_j^4\, e^{4i\phi_j} \bigr\rangle,
+        \label{eq:c13}\\
       (\mathcal{C}_c)_{0-}
-      &= \frac{1}{N}\sum_j \frac{r_j^2}{\sqrt{2}} \cdot \frac{r_j^2}{2}\, e^{2i\phi_j}
-      = \frac{\langle r_j^4 \rangle}{2\sqrt{2}}\,
-      \left\langle e^{2i\phi_j} \right\rangle = 0.
+      &= \frac{1}{N}\sum_j \varepsilon_j \frac{r_j^2}{\sqrt{2}}
+         \cdot \frac{r_j^2}{2}\, e^{2i\phi_j}
+      = \frac{1}{2\sqrt{2}}\,
+        \bigl\langle \varepsilon_j\, r_j^4\, e^{2i\phi_j} \bigr\rangle .
+        \label{eq:c23}
     \end{align}
-    Under condition~\eqref{eq:phase-decor}, $\langle e^{2i\phi_j} \rangle = 0$, which annihilates
-    $(\mathcal{C}_c)_{+0}$ and $(\mathcal{C}_c)_{0-}$ directly.
-    The entry $(\mathcal{C}_c)_{+-}$ involves $\langle e^{4i\phi_j} \rangle$; we assume the
-    absence of a persistent fourth-harmonic bias,
-    \begin{equation}
-      \label{eq:phase-decor4}
-      \left\langle e^{4i\phi_j} \right\rangle = 0,
-    \end{equation}
-    which is independent of~\eqref{eq:phase-decor}, empirically supported by the O29
-    data~\cite{Beau2026a33}, and consistent with the BFS phase structure on $G_q$.
-    The covariance~\eqref{eq:cov-diag} follows, and the ratio~\eqref{eq:ratio} is immediate.
+    Each vanishes exactly when the corresponding average in~\eqref{eq:phase-decor} vanishes, which
+    gives both sufficiency and necessity.
+    Substituting the diagonal entries yields~\eqref{eq:cov-diag}, and normalising by $\lambda_1$
+    gives~\eqref{eq:ratio}.
   \end{proof}
+
+  \begin{remark}[The unweighted second harmonic does not suffice]
+    \label{rem:countermodels}
+    Neither condition in~\eqref{eq:phase-decor} follows from
+    $\langle e^{2i\phi_j}\rangle = 0$, and no amplitude--phase independence is assumed anywhere
+    above; assuming it would be an additional hypothesis, not a consequence of either harmonic
+    average.
+    Two finite countermodels make this explicit.
+    \begin{enumerate}
+      \item Two points with $\varepsilon_j \equiv +1$, constant $r_j = r$, and
+      $\phi_1 = 0$, $\phi_2 = \pi/2$.
+      Then $\langle e^{2i\phi_j}\rangle = \tfrac12(1 + e^{i\pi}) = 0$, while
+      $\langle e^{4i\phi_j}\rangle = \tfrac12(1 + e^{2i\pi}) = 1$, so
+      $(\mathcal{C}_c)_{+-} = r^4/4 \neq 0$.
+      \item The same phases with $r_1 = 1$, $r_2 = 2$.
+      Then $\langle e^{2i\phi_j}\rangle = 0$ still, but
+      $\langle \varepsilon_j r_j^4 e^{2i\phi_j}\rangle = \tfrac12(1 - 16) = -\tfrac{15}{2} \neq 0$,
+      so $(\mathcal{C}_c)_{+0}$ and $(\mathcal{C}_c)_{0-}$ survive as well.
+    \end{enumerate}
+    Conditions~\eqref{eq:phase-decor} are therefore genuinely stronger, and they are not measured
+    in O29~\cite{Beau2026a33}, which reports no fourth-harmonic and no weighted decorrelation.
+    They are hypotheses of this model, with no empirical support cited here.
+  \end{remark}
 
   \begin{remark}[Phase decorrelation vs.\ ergodicity]
     \label{rem:ergodicity}
-    The condition~\eqref{eq:phase-decor} is strictly weaker than ergodicity of the BFS
-    trajectory on $S^1$.
-    It requires only that the complex average of $e^{2i\phi_j}$ over the fitting window
-    vanishes---a single-harmonic condition.
-    This is consistent with the BFS on $G_q = \mathrm{Heis}_3(\mathbb{Z}/q\mathbb{Z})$ exploring
-    all relative phases between the two Weil-block projections across the fitting window
-    $[n_0, n_1]$, and is confirmed numerically by
-    the symmetry-ratio measurements of O29~\cite{Beau2026a33}
-    (median $|\alpha_j - \bar\beta_j|_F / |w_j| \in [0.028, 0.070]$ for
-    $q \in \{61, 151\}$).
+    The conditions~\eqref{eq:phase-decor} are strictly weaker than ergodicity of the BFS
+    trajectory on $S^1$: they constrain two weighted harmonic averages over the fitting window, not
+    the whole orbit closure.
+    They are strictly \emph{stronger} than the unweighted single-harmonic condition
+    $\langle e^{2i\phi_j}\rangle = 0$, which does not imply them
+    (Remark~\ref{rem:countermodels}).
+    No measurement of a weighted or fourth harmonic exists in O29~\cite{Beau2026a33} or elsewhere in
+    the cited corpus, so~\eqref{eq:phase-decor} has no empirical support here and is carried as a
+    hypothesis.
   \end{remark}
 
   \begin{remark}[Trace check]
     \label{rem:trace}
-    The trace of $\mathcal{C}_c$ from~\eqref{eq:cov-diag} is
-    $\langle r_j^4\rangle(1/4 + 1/2 + 1/4) = \langle r_j^4\rangle$,
-    consistent with $\tr \mathcal{C}_c = \langle \|M_j\|_F^2\rangle / N$
-    and $\|M_j\|_F^2 = \|w_j\|^4 = r_j^4$ (since $M_j = w_j w_j^\top$ has Frobenius
-    norm $\|w_j\|^2$). The normalisation is self-consistent.
+    With the single convention $\langle \cdot \rangle = N_{\mathrm{total}}^{-1}\sum_j$ used
+    throughout, the trace of $\mathcal{C}_c$ from~\eqref{eq:cov-diag} is
+    $\langle r_j^4\rangle(1/4 + 1/2 + 1/4) = \langle r_j^4\rangle$, and the exact identity is
+    \[
+      \tr \mathcal{C}_c = \bigl\langle \|M_j\|_F^2 \bigr\rangle ,
+    \]
+    with no further division by $N$, since $\|M_j\|_F^2 = \|w_j\|^4 = r_j^4$
+    ($M_j = w_j w_j^\top$ has Frobenius norm $\|w_j\|^2$).
   \end{remark}
 
-  \section{Structural Origin: Heisenberg Grading and the Factor of~$2$}
+  \section{Symmetric-Tensor Normalisation and the Carnot Direction Label}
   \label{sec:carnot}
 
-  \begin{theorem}[Heisenberg grading as the structural origin]
+  \begin{theorem}[Diagonal entries and the symmetric-tensor factor]
     \label{thm:carnot}
-    The eigenvalue ratio $\lambda_1/\lambda_2 = 2$ in~\eqref{eq:ratio} is a direct
-    consequence of the degree-$2$ Carnot weight of the central generator
-    $Z = [X, Y]$ in $\mathrm{Heis}_3$.
-    More precisely, in the identification $\Heff \cong \Sym^2(V_\rho)$
-    of~\eqref{eq:sym2}:
-    \begin{enumerate}
-      \item[(i)] The weight-$0$ direction $e_0 \in \Sym^2(V_\rho)$ corresponds to the
-      Carnot-degree-$2$ central generator $Z$, while the weight-$\pm 1$ directions
-      $e_\pm$ correspond to the Carnot-degree-$1$ horizontal generators $X$ and $Y$.
-      \item[(ii)] The bilinear term $\sqrt{2}\,\alpha_j\beta_j$ expressing the $e_0$
-      component of $\operatorname{vec}(M_j)$ is the \emph{product} of two degree-$1$
-      amplitudes, and carries a factor of $\sqrt{2}$ from the symmetric-tensor normalisation.
-      \item[(iii)] The covariance $(\mathcal{C}_c)_{00} = 2\langle|\alpha_j|^2|\beta_j|^2\rangle$
-      receives a factor of $2$ from the squared $\sqrt{2}$ normalisation in~\eqref{eq:sym2basis},
-      while each diagonal entry
-      $(\mathcal{C}_c)_{\pm\pm} = \langle|\alpha_j|^4\rangle = \langle|\beta_j|^4\rangle$
-      receives no such factor.
-      \item[(iv)] The equatorial constraint $|\alpha_j| = |\beta_j| = r_j/\!\sqrt{2}$ equalises
-      the individual amplitudes, so the factor of $2$ is the \emph{only} source of asymmetry
-      between $e_0$ and $\{e_+, e_-\}$, producing $\lambda_1/\lambda_2 = 2$ exactly.
-      This factor is not dynamical (it does not depend on the specific BFS trajectory)
-      and not statistical (it does not depend on the distribution of $r_j$ or $\phi_j$):
-      it is purely structural, fixed by the symmetric-tensor normalisation in~\eqref{eq:sym2basis}
-      together with the equatorial constraint.
-    \end{enumerate}
+    Assume (H0)--(H3), with the single averaging convention of Remark~\ref{rem:null}.
+    Then the diagonal entries of $\Cc$ in the basis $\{e_+, e_0, e_-\}$ are
+    \[
+      (\Cc)_{++} = (\Cc)_{--} = \tfrac14 \langle r_j^4 \rangle ,
+      \qquad
+      (\Cc)_{00} = \tfrac12 \langle r_j^4 \rangle ,
+    \]
+    so the central diagonal entry exceeds each outer one by a factor of two.
+    That factor is the square of the coefficient $\sqrt{2}$ of the symmetric basis
+    vector $e_0$ in~\eqref{eq:sym2basis}; it is not dynamical and not statistical.
+
   \end{theorem}
 
   \begin{proof}
-    Points (i)--(ii) follow from the grading correspondence of Q7~\cite{Beau2026q7} (Remark~4.2):
-    the weight grading on $\Sym^2(V_\rho)$ by $J_3$-eigenvalue $m \in \{+1, 0, -1\}$ and
-    the Carnot grading on $\mathrm{heis}_3$ by homogeneous degree $d \in \{1, 2\}$ are matched
-    by $(m, d) = (\pm 1, 1)$ for $e_\pm$ and $(m, d) = (0, 2)$ for $e_0$.
-
-    For point (iii), the $\sqrt{2}$ normalisation in the symmetric-tensor basis vector
-    $e_0 = (v_+\!\otimes v_- + v_-\!\otimes v_+)/\sqrt{2}$ gives the coefficient
-    $\sqrt{2}\,\alpha_j\beta_j$ in~\eqref{eq:vecM}, and
-    $|\sqrt{2}\,\alpha_j\beta_j|^2 = 2|\alpha_j|^2|\beta_j|^2$.
-    The diagonal entries carry $|\alpha_j^2|^2 = |\alpha_j|^4$ with no prefactor.
-
-    For point (iv), the equatorial condition $|\alpha_j| = |\beta_j| = r_j/\!\sqrt{2}$ gives
-    $|\alpha_j|^4 = |\beta_j|^4 = r_j^4/4$ and $|\alpha_j|^2|\beta_j|^2 = r_j^4/4$, so
-    $(\mathcal{C}_c)_{00} = 2 \cdot r_j^4/4 = r_j^4/2$
-    and
-    $(\mathcal{C}_c)_{\pm\pm} = r_j^4/4$.
-    The ratio $r_j^4/2 : r_j^4/4 = 2:1$ is independent of $r_j$ and of $\phi_j$.
-    Without the equatorial condition, $|\alpha_j| \neq |\beta_j|$ and the factor of $2$ from the
-    symmetric-tensor normalisation would be partially masked by the amplitude asymmetry; the
-    equatorial condition is precisely what isolates the factor of $2$ as the \emph{sole}
-    eigenvalue asymmetry.
+    The $\sqrt{2}$ normalisation in
+    $e_0=(v_+\!\otimes v_-+v_-\!\otimes v_+)/\sqrt{2}$ gives the coefficient
+    $\sqrt{2}\,\alpha_j\beta_j$ in~\eqref{eq:vecM}, whereas the outer coordinates have
+    coefficients $\alpha_j^2$ and $\beta_j^2$. The equatorial condition gives
+    $|\alpha_j|^4=|\beta_j|^4=r_j^4/4$ and
+    $|\alpha_j|^2|\beta_j|^2=r_j^4/4$. Averaging therefore yields the three stated
+    diagonal entries. No phase or dynamical premise enters this diagonal calculation.
   \end{proof}
+
+  \begin{remark}[Optional grading interpretation]
+    If one separately supplies the graded matching $e_0\leftrightarrow Z=[X,Y]$ and
+    $e_\pm\leftrightarrow X,Y$, then the Carnot grading labels which direction carries the
+    symmetric-tensor factor. This matching is interpretive input and is not used in the proof.
+  \end{remark}
+
+  \begin{remark}[This theorem does not give the spectral ratio]
+    \label{rem:carnot-scope}
+    Diagonal entries are not eigenvalues unless the off-diagonal entries vanish.
+    Only Theorem~\ref{thm:spectrum}, under the two weighted
+    conditions~\eqref{eq:phase-decor}, converts the entries above into the spectrum and yields the
+    ratio~\eqref{eq:ratio}.
+    Without those conditions $\Cc$ generally has non-zero off-diagonal entries and its eigenvalues
+    need not stand in the ratio $[1 : \tfrac12 : \tfrac12]$.
+  \end{remark}
 
   \begin{remark}[Relation to the Casimir]
     \label{rem:casimir}
-    The matrix $\mathcal{C}_c = \langle r_j^4\rangle\,\mathrm{diag}(1/4, 1/2, 1/4)$
-    is not proportional to the identity and therefore not $\mathfrak{su}(2)$-invariant.
-    It is $J_3^2$-equivariant: $\mathcal{C}_c = \langle r_j^4\rangle(\tfrac{1}{4}I + \tfrac{1}{4}J_3^2)$,
-    since $J_3^2 = \mathrm{diag}(1, 0, 1)$ on $V_1 = \Sym^2(V_{1/2})$.
-    The symmetry breaking from $\mathfrak{su}(2)$-invariance (which would give $[1:1:1]$)
-    to $J_3$-equivariance (which gives $[1:\tfrac{1}{2}:\tfrac{1}{2}]$) is precisely the
-    Carnot grading: the central generator $Z$ is distinguished from $X, Y$ by the degree-$2$
-    stratification, breaking the isotropy between $e_0$ and $\{e_+, e_-\}$.
+    Under the hypotheses of Theorem~\ref{thm:spectrum} --- (H0)--(H3) together with the two weighted
+    conditions~\eqref{eq:phase-decor} --- the covariance is
+    $\Cc = \langle r_j^4\rangle\,\operatorname{diag}(1/4, 1/2, 1/4)$, which is not proportional to
+    the identity and therefore not $\mathfrak{su}(2)$-invariant.
+    With $J_3^2 = \operatorname{diag}(1, 0, 1)$ on $V_1 = \Sym^2(V_{1/2})$ it is
+    $J_3^2$-equivariant, in the form
+    \[
+      \Cc = \langle r_j^4\rangle\Bigl(\tfrac{1}{2} I - \tfrac{1}{4} J_3^2\Bigr) .
+    \]
+    Without the weighted conditions $\Cc$ is not diagonal and this expression does not hold.
+    The algebraic source of the unequal diagonal entries is the symmetric-tensor normalisation.
+    The Carnot grading supplies an interpretation of the distinguished $e_0$ direction by matching
+    it with the degree-$2$ central generator $Z$, but it is not the cause of the factor.
   \end{remark}
 
-  \section{Closure of the Open Problem and Discussion}
+  \section{Scope of the Model and Discussion}
   \label{sec:discussion}
 
-  \subsection{What O30 establishes}
+  \subsection{What this paper establishes}
     \label{sec:establishes}
 
-    The following results are proved in this paper.
+    \paragraph{Sign-carrying equatorial constraint (Theorem~\ref{thm:equatorial}).}
+      Under (H0)--(H3), $\BI(w_j) = \varepsilon_j w_j$ with $\varepsilon_j \in \{\pm 1\}$, hence
+      $|\alpha_j| = |\beta_j|$ exactly within the stated model.
+      The sign is an output of (H3) and is carried through the argument.
 
-    \paragraph{Equatorial constraint (Theorem~\ref{thm:equatorial}, proved).}
-      Every admissible trajectory vector $w_j \in V_\rho$ satisfies $|\alpha_j| = |\beta_j|$
-      to leading order, as a direct algebraic consequence of the BI parity anti-linearity
-      $\rho_{q-c} = \bar\rho_c$ and the admissibility condition $\pi_{q-c}(v_j) = w_j$.
-      The correction is $O(q^{-1/2})$ from~\cite{Beau2026u1}.
+    \paragraph{Spectrum of the $3\times3$ model (Theorem~\ref{thm:spectrum}).}
+      Under the two weighted conditions~\eqref{eq:phase-decor}, and only under them, the
+      $3\times3$ covariance on $\Sym^2(V_\rho)$ has the diagonal form~\eqref{eq:cov-diag} with
+      ratio $[1:\tfrac{1}{2}:\tfrac{1}{2}]$.
+      The unweighted second-harmonic condition does not suffice
+      (Remark~\ref{rem:countermodels}).
 
-    \paragraph{Covariance spectrum (Theorem~\ref{thm:spectrum}, proved).}
-      For equatorial trajectories with phase decorrelation~\eqref{eq:phase-decor},
-      the covariance $\mathcal{C}_c$ has exactly the diagonal form~\eqref{eq:cov-diag}
-      with spectral ratio $[1:\tfrac{1}{2}:\tfrac{1}{2}]$.
-      No additional hypothesis is required beyond the equatorial constraint and single-harmonic
-      phase decorrelation.
+    \paragraph{Structural origin of the factor $2$ (Theorem~\ref{thm:carnot}).}
+      Within this model, the factor of $2$ between $\lambda_1$ and $\lambda_{2,3}$ is the squared
+      symmetric-tensor normalisation coefficient. If the separate graded matching is supplied,
+      the Carnot-degree-$2$ generator $Z = [X, Y]$ labels the direction carrying that factor; it
+      does not cause the factor.
 
-    \paragraph{Structural origin (Theorem~\ref{thm:carnot}, proved).}
-      The factor of $2$ between $\lambda_1$ and $\lambda_{2,3}$ is the symmetric-tensor
-      normalisation coefficient squared, isolated by the equatorial constraint.
-      It is not a coincidence of the specific BFS trajectory but a structural consequence of
-      the Carnot-degree-$2$ status of the central generator $Z = [X, Y]$ and the identification
-      $\Heff \cong \Sym^2(V_\rho)$.
-
-  \subsection{What remains open}
+  \subsection{What this paper does not establish}
   \label{sec:open}
 
-  The following directions are not addressed in this paper.
+    \paragraph{The object is not O28's covariance.}
+      The covariance studied here is a conditional $3\times3$ model on $\Sym^2(V_\rho)$.
+      It is not the $9\times9$ covariance on $\End(\Heff)$ measured in O28~\cite{Beau2026a32}, and
+      it does not provide an analytical account of its spectrum.
+      Identifying $(\Heff)_{\mathbb{C}} \cong \Sym^2(V_\rho)$ names the carrier as a
+      three-dimensional representation; it neither places the observed vectors on the Veronese cone
+      --- that is hypothesis (H0) --- nor identifies O28's outer product in
+      $\Sym^2((\Heff)_{\mathbb{C}})$ with a vector of $\Sym^2(V_\rho)$.
+      Constructing that identification, or rebuilding the account directly on $\End(\Heff)$, is a
+      separate problem and is not attempted here.
 
-  \paragraph{Analytical control of the $O(q^{-1/2})$ correction.}
-    Theorem~\ref{thm:equatorial} establishes the equatorial condition at leading order.
-    Quantitative control of the deviation $|\alpha_j| - |\beta_j| = O(q^{-1/2})$ beyond
-    the universality rate of U1~\cite{Beau2026u1} is open.
+    \paragraph{The hypotheses are not derived.}
+      (H0)--(H3) and the two conditions~\eqref{eq:phase-decor} are assumptions.
+      Deriving any of them from the BFS dynamics on $G_q$ and the Weil representation is open.
+      In particular no fourth-harmonic or weighted decorrelation measurement exists in the cited
+      sources.
 
-  \paragraph{Phase decorrelation.}
-    Condition~\eqref{eq:phase-decor} is stated as an assumption.
-    Deriving it from the BFS dynamics on $G_q$ and the Weil representation would fully
-    analytify the proof of Theorem~\ref{thm:spectrum}.
+  \subsection{Empirical context}
+  \label{sec:empirical}
 
-  \paragraph{Extension to $q \in \{307, 401\}$.}
-    The numerical confirmation of $r_{\mathrm{eff}} = 3$ and the eigenvalue ratio
-    $\lambda_2/\lambda_1 = \tfrac{1}{2}$ is established for $q \in \{29, 61, 101, 151\}$
-    (O28~\cite{Beau2026a32}, O29~\cite{Beau2026a33}).
-    Extension to larger primes is planned as part of the O-series numerical campaign.
+    O28~\cite{Beau2026a32} measures the $9\times9$ covariance on $\End(\Heff)$ and reports the
+    ratio $[1:\tfrac{1}{2}:\tfrac{1}{2}]$ across every conjugate pair at
+    $q \in \{61, 101, 151\}$; at $q = 29$ only five of the fourteen pairs are non-empty and the
+    statement there is restricted to those five (O28, table and accompanying text).
+    That measurement is cited here as external motivation.
+    It is an empirical result, and it remains without the analytical account previously
+    attributed to this paper; no derivation runs from it to the model developed above.
 
   \subsection{Relation to the programme}
   \label{sec:programme}
 
-  The analytical derivation of the eigenvalue ratio completes the structural account of
-  the $O28$--$O29$ covariance measurement.
-  Combined with the carrier identification $\Heff \cong \Sym^2(V_\rho)$
-  ($r_{\mathrm{eff}} = 3 = \dim \Sym^2(V_\rho)$, $d_\rho = 2$) from O29~\cite{Beau2026a33} and the
-  Heisenberg structure derivation of O27~\cite{Beau2026a31}, the O-series now provides a fully analytical
-  account of the spin-$1$ carrier and its spin-$\tfrac{1}{2}$ square-root in the following chain:
-  \begin{equation}
-    \label{eq:chain}
-    \text{emergence} \Rightarrow \mathfrak{su}(2)\;[\text{O27}]
-    \Rightarrow d_\rho = 2\;[\text{O29}]
-    \Rightarrow \lambda_1/\lambda_2 = 2\;[\text{O30, proved}].
-  \end{equation}
+  The conditional account given here sits alongside O29's finite-checkpoint rank diagnostics
+  in $\End(\Heff)$~\cite{Beau2026a33}, which neither identify the doublet dimension nor supply a
+  Veronese square root, and alongside the
+  factorisation statement of O27~\cite{Beau2026a31}, which is conditional on the carrier supplied by
+  O23.
+  These are adjacent but logically distinct statements:
+  \begin{enumerate}
+    \item O27 gives its factorisation statement conditional on O23's supplied carrier.
+    \item O29 reports $r_{\mathrm{eff}}=3$ on the checkpoint data in $\End(\mathbb{C}^3)$.
+    \item O30 obtains $\lambda_1/\lambda_2=2$ only inside the conditional $3\times3$ model.
+  \end{enumerate}
+  The O30 statement is conditional on (H0)--(H3) \emph{and} on the two weighted conditions
+  $\langle \varepsilon_j r_j^4 e^{2i\phi_j}\rangle = 0$ and
+  $\langle r_j^4 e^{4i\phi_j}\rangle = 0$; it concerns the $3\times3$ model on $\Sym^2(V_\rho)$ and
+  says nothing about the $9\times9$ covariance on $\End(\Heff)$ measured in O28.
 
   \newpage
   \section{Conclusion}
   \label{sec:conclusion}
 
-  Paper O30 provides the analytical explanation of the invariant eigenvalue structure
-  $[\lambda_1 : \lambda_2 : \lambda_3] = [1 : \tfrac{1}{2} : \tfrac{1}{2}]$ first observed
-  numerically in O28~\cite{Beau2026a32} and confirmed in O29~\cite{Beau2026a33}.
-  The derivation rests on three inputs: the anti-linear conjugation identity
-  $\rho_{q-c} = \bar\rho_c$ (O17; recalled in O18 Theorem~3.1~\cite{Beau2026a22}), the identification
-  $\Heff \cong \Sym^2(V_\rho)$ from O28--O29 and Q7~\cite{Beau2026q7}, and the
-  Carnot grading of $\mathrm{Heis}_3$.
-  No numerical fit or additional hypothesis enters the core argument; the equatorial
-  constraint and the covariance ratio follow by direct algebraic computation.
+  This paper develops a conditional $3\times3$ model on $\Sym^2(V_\rho)$, under the hypotheses
+  (H0)--(H3) of \S\ref{ssec:hyp} and, for its spectrum, the two weighted decorrelation
+  conditions~\eqref{eq:phase-decor}.
+  It is not the $9\times9$ covariance on $\End(\Heff)$ measured in O28~\cite{Beau2026a32}, and it
+  does not provide an analytical account of its spectrum; that ratio remains an empirical result.
+  The further inputs are the anti-linear conjugation identity $\rho_{q-c} = \bar\rho_c$ (O17;
+  recalled in O18 Theorem~3.1~\cite{Beau2026a22}), the supplied model identification
+  $(\Heff)_{\mathbb{C}} \cong \Sym^2(V_\rho)$. A separately supplied graded matching to
+  $\mathrm{Heis}_3$ is optional interpretive input, not part of the algebraic derivation.
+  Given the hypotheses, the equatorial constraint and the covariance ratio follow by direct
+  algebraic computation; no numerical fit enters.
 
-  The factor of $2$ between $\lambda_1$ (on the weight-$0$ direction $e_0$,
-  corresponding to $Z = [X, Y]$) and $\lambda_2 = \lambda_3$ (on the weight-$\pm 1$
-  directions $e_\pm$, corresponding to $X$ and $Y$) is the squared symmetric-tensor
-  normalisation coefficient.
-  The equatorial constraint, which is itself a consequence of the BI parity anti-linearity,
-  is the condition that isolates this coefficient as the sole eigenvalue asymmetry.
+  The factor of $2$ between $\lambda_1$ (on the weight-$0$ direction $e_0$) and
+  $\lambda_2 = \lambda_3$ (on the weight-$\pm 1$ directions $e_\pm$) is the squared
+  symmetric-tensor normalisation coefficient. Under the optional graded matching, these directions
+  are labelled by $Z=[X,Y]$ and $X,Y$, respectively.
+  The equatorial constraint is the condition that isolates this coefficient as the sole eigenvalue
+  asymmetry.
+  It follows from the BI parity anti-linearity together with (H0)--(H3); the anti-linearity alone
+  relates the sectors $c$ and $q-c$ and does not constrain a single admissible vector, and fixing
+  the projected point at the level of the symmetric square determines the lift only up to the sign
+  $\varepsilon_j$.
+
+  \begin{remark}[Three distinct covariance objects]
+    \label{rem:two-covariances}
+    Three distinct objects must be kept apart.
+    \begin{enumerate}
+      \item The $3\times3$ covariance $\Cc$ of this paper, on $\Sym^2(V_\rho) \cong \mathbb{C}^3$,
+      built from $\operatorname{vec}(M_j)$ with $M_j = w_j \otimes w_j$ and $w_j \in V_\rho \cong
+      \mathbb{C}^2$.
+      \item The $9\times9$ covariance of O28~\cite{Beau2026a32}, on $\End(\Heff)$ with
+      $\Heff = \mathbb{C}^3$, whose measured ratio is
+      $[1 : \tfrac{1}{2} : \tfrac{1}{2}]$.
+      \item The linear Hermitian covariance $\langle w\,w^{\dagger}\rangle$ of
+      O29~\cite{Beau2026a33}, formed from vectors $w_j \in \Heff = \mathbb{C}^3$, which reports
+      $[1 : 0.6 : 0.6]$ at $q = 29$ and $[1 : 0.8 : 0.8]$ at $q = 61$, trending towards isotropy,
+      and records that this ratio is a property of the group dynamics rather than a universal
+      algebraic constant.
+    \end{enumerate}
+    No statement of the present paper applies to the second or the third.
+  \end{remark}
+
+  \begin{remark}[Status]
+    \label{rem:status}
+    The covariance studied here is a conditional $3\times3$ model on $\Sym^2(V_\rho)$.
+    It is not the $9\times9$ covariance on $\End(\Heff)$ measured in O28~\cite{Beau2026a32} and does
+    not provide an analytical account of its spectrum.
+    The O28 $9\times9$ covariance ratio remains an empirical result without the analytical account
+    previously attributed to this paper.
+  \end{remark}
 
   \section*{Acknowledgements.}
     AI-assisted tools were used during the preparation of this work.
