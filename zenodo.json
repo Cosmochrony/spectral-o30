@@ -3,5 +3,6 @@
   "web_url": "https://cosmochrony.org/science/spectral/program/o30/",
   "main_tex": "tex/Spectral-O30.tex",
   "zenodo_id": 20014707,
-  "doi": "10.5281/zenodo.20014707"
+  "doi": "10.5281/zenodo.20014707",
+  "notes": "Version 2.0 recasts O30 as a conditional 3x3 model on Sym^2(V_rho), distinct from O28's measured 9x9 covariance. Equatorial fibres require H0-H3; the exact diagonal spectrum additionally requires two weighted decorrelation conditions. The former claim that Born-Infeld parity alone forces the fibre or analytically explains O28 is withdrawn."
 }

@@ -1,7 +1,8 @@
 cff-version: 1.2.0
 message: "If you cite this work, please use the metadata from this file."
-title: "Born–Infeld Parity Forces an Equatorial Admissible Fibre: Analytical Derivation of the [1: 1 2 : 1 2 ] Eigenvalue Ratio in Sym^2(V_ )"
-type: software
+title: "A Conditional 3×3 Model on Sym²(Vρ): Equatorial Fibres from a Fixed Symmetric Square, and the Exact Decorrelation Conditions for its Spectrum"
+type: article
+version: "2.0"
 authors:
   - family-names: "Beau"
     given-names: "Jérôme"
@@ -11,7 +12,7 @@ doi: "10.5281/zenodo.20014707"
 license: "CC-BY-4.0"
 preferred-citation:
   type: article
-  title: "Born–Infeld Parity Forces an Equatorial Admissible Fibre: Analytical Derivation of the [1: 1 2 : 1 2 ] Eigenvalue Ratio in Sym^2(V_ )"
+  title: "A Conditional 3×3 Model on Sym²(Vρ): Equatorial Fibres from a Fixed Symmetric Square, and the Exact Decorrelation Conditions for its Spectrum"
   authors:
     - family-names: "Beau"
       given-names: "Jérôme"
